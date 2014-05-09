@@ -15,7 +15,7 @@
    this program; if not, write to the Free Software Foundation, Inc., 51
    Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. */
 
-#include "processor.h"
+#include "../16machine/machine/processor.h"
 
 // Initializes all registers and subregisters.
 void init_regs(){
