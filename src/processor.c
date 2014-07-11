@@ -16,6 +16,7 @@
    Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. */
 
 #include "../16machine/machine/processor.h"
+#include "../16common/common/core.h"
 
 // Initializes all registers and subregisters.
 void init_regs(){
@@ -77,15 +78,15 @@ int proc_tick(){
     if (op == OP_TERM){ // exit case
         return -1;
     }
-    if (op <= OP_MAX_REG_REG){             // binary operators
+    if (is_bin_op(op)){                    // binary operators
         op_bin_ops(op);
-    }else if (op <= OP_LT_REG_REG){        // comparison operators
+    }else if (is_cmp_op(op)){              // comparison operators
         op_cmp_ops(op);
-    }else if (op <= OP_SET_REG){           // unary operators
+    }else if (is_un_op(op)){               // unary operators
         op_un_ops(op);
     }else if ((op >> 1) << 1 == OP_PUSH_){ // op push
         op_push(op);
-    }else if (op <= OP_JMPF){              // jump operations
+    }else if (is_jmp_op(op)){              // jump operations
         op_jmp(op);
     }else if (op <= OP_WRITE_REG){         // escaping write
         op_write(op);

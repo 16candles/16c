@@ -2,6 +2,7 @@
 # Copyright (c) Joe Jevnik 2014
 
 set(16C_FILES processor.c
+              ../16common/common/core.c
               ../16machine/machine/memory.c
               ../16machine/machine/operations.c)
 
